@@ -1,0 +1,14 @@
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\bin\Debug\net8.0\Ml.Net Data Cleanup.exe
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\bin\Debug\net8.0\Ml.Net Data Cleanup.deps.json
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\bin\Debug\net8.0\Ml.Net Data Cleanup.runtimeconfig.json
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\bin\Debug\net8.0\Ml.Net Data Cleanup.dll
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\bin\Debug\net8.0\Ml.Net Data Cleanup.pdb
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\Ml.Net Data Cleanup.GeneratedMSBuildEditorConfig.editorconfig
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\Ml.Net Data Cleanup.AssemblyInfoInputs.cache
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\Ml.Net Data Cleanup.AssemblyInfo.cs
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\Ml.Net Data Cleanup.csproj.CoreCompileInputs.cache
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\Ml.Net Data Cleanup.dll
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\refint\Ml.Net Data Cleanup.dll
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\Ml.Net Data Cleanup.pdb
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\Ml.Net Data Cleanup.genruntimeconfig.cache
+D:\AI For Developers-The Starting Point\ML.Net\ConsoleApp1\obj\Debug\net8.0\ref\Ml.Net Data Cleanup.dll

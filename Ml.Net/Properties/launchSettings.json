@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Ml.Net": {
+      "commandName": "Project",
+      "workingDirectory": "$(ProjectDir)"
+    }
+  }
+}
