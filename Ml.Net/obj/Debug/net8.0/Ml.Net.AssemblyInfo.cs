@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ml.Net")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce355f21e5feb157b4b57ae2899bcaf3ccfcb12d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8f98f29e7591e81f7726438f613b409df68b1cc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ml.Net")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ml.Net")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
