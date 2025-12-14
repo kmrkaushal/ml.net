@@ -41,3 +41,4 @@ D:\AI For Developers-The Starting Point\ML.Net\Ml.Net\obj\Debug\net8.0\ref\Ml.Ne
 D:\AI For Developers-The Starting Point\ML.Net\Ml.Net\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\AI For Developers-The Starting Point\ML.Net\Ml.Net\bin\Debug\net8.0\System.Collections.Immutable.dll
 D:\AI For Developers-The Starting Point\ML.Net\Ml.Net\bin\Debug\net8.0\System.Threading.Channels.dll
+D:\AI For Developers-The Starting Point\ML.Net\Ml.Net\obj\Debug\net8.0\Ml.Net.sourcelink.json
