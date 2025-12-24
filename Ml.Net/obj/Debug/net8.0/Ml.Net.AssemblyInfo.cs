@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ml.Net")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+136865afd7f3eac93ab887f73cb98e5fcec656f9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb1234c5f4436d72944b6ae6961bd21e698b219c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ml.Net")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ml.Net")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
