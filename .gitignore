@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DeepLearning/bin/Debug/net8.0
+/DeepLearning/obj/Debug/net8.0
+/DeepLearning/obj

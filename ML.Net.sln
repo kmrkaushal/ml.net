@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ml.Net", "Ml.Net\Ml.Net.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepLearning", "..\DeepLearning\DeepLearning.csproj", "{CC3AB8CB-BBA5-43EB-A436-23CCD42E2EEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC3AB8CB-BBA5-43EB-A436-23CCD42E2EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC3AB8CB-BBA5-43EB-A436-23CCD42E2EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC3AB8CB-BBA5-43EB-A436-23CCD42E2EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC3AB8CB-BBA5-43EB-A436-23CCD42E2EEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

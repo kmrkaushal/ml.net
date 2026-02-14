@@ -1,71 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\AI For Developers-The Starting Point\\ML.Net\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}|WebAPI\\WebAPI.csproj|d:\\ai for developers-the starting point\\ml.net\\webapi\\inout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\inout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}|WebAPI\\WebAPI.csproj|d:\\ai for developers-the starting point\\ml.net\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}|WebAPI\\WebAPI.csproj|d:\\ai for developers-the starting point\\ml.net\\webapi\\controllers\\predictcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DF80F9F-4155-4E09-B1C8-D9118B9C4C56}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\predictcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "D:\\ml.net\\ml.net\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PredictController.cs",
-              "DocumentMoniker": "D:\\AI For Developers-The Starting Point\\ML.Net\\WebAPI\\Controllers\\PredictController.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Controllers\\PredictController.cs",
-              "ToolTip": "D:\\AI For Developers-The Starting Point\\ML.Net\\WebAPI\\Controllers\\PredictController.cs",
-              "RelativeToolTip": "WebAPI\\Controllers\\PredictController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T13:00:09.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InOut.cs",
-              "DocumentMoniker": "D:\\AI For Developers-The Starting Point\\ML.Net\\WebAPI\\InOut.cs",
-              "RelativeDocumentMoniker": "WebAPI\\InOut.cs",
-              "ToolTip": "D:\\AI For Developers-The Starting Point\\ML.Net\\WebAPI\\InOut.cs",
-              "RelativeToolTip": "WebAPI\\InOut.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T12:54:24.697Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\AI For Developers-The Starting Point\\ML.Net\\WebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
-              "ToolTip": "D:\\AI For Developers-The Starting Point\\ML.Net\\WebAPI\\Program.cs",
-              "RelativeToolTip": "WebAPI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAACLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T12:52:17.285Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
