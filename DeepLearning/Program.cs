@@ -1,15 +1,31 @@
-﻿using System.Drawing;
-using DeepLearning;
+using DeepLearning.Application.Abstractions;
+using DeepLearning.Application.Configuration;
+using DeepLearning.Application.UseCases;
+using DeepLearning.Infrastructure.Capture;
+using DeepLearning.Infrastructure.Detection;
+using DeepLearning.Infrastructure.Pathing;
+using DeepLearning.Infrastructure.Rendering;
+using DeepLearning.Presentation.Console;
 
-//using var yolo = new OnnxYoloRunner("yolov8n.onnx");
-//Bitmap bmp = new Bitmap("traffic.jpg");
-//var dets = yolo.Detect(bmp, 0.25f);
+var options = new DetectionOptions();
 
-//foreach (var d in dets)
-//    Console.WriteLine(d);
+using IObjectDetector detector = new OnnxObjectDetector(options);
+IProjectPathProvider pathProvider = new ProjectPathProvider();
+IImageRenderer imageRenderer = new DetectionOverlayRenderer(options);
+IUserInterface userInterface = new ConsoleUserInterface();
+IWebcamDetectionLoop webcamDetectionLoop = new WebcamDetectionLoop(options, detector, imageRenderer, userInterface);
 
-//using var result = yolo.DetectAndOverlay(bmp, 0.25f);
-//result.Save("output.jpg");
+var detectImageFromFileUseCase = new DetectImageFromFileUseCase(
+    options,
+    detector,
+    imageRenderer,
+    pathProvider);
 
-// RealTime Object Detection 
-new YoloRealTime().detect();
+var runDetectionApplication = new RunDetectionApplication(
+    options,
+    userInterface,
+    webcamDetectionLoop,
+    detectImageFromFileUseCase,
+    pathProvider);
+
+runDetectionApplication.Execute();
