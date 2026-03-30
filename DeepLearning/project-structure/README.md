@@ -2,7 +2,25 @@
 
 > **Last Updated:** March 2026  
 > **Version:** 1.0.0  
-> **Architecture:** Clean Architecture (Domain / Application / Infrastructure / Presentation)
+> **Architecture:** Clean Architecture (Domain / Application / Infrastructure / Presentation)  
+> **Branch:** `feature/clean-architecture-yolo-detector` — SOAP version
+
+---
+
+## BRANCH STRUCTURE — IMPORTANT
+
+This repo has **two separate project variants** on different branches. **They must NOT be merged into each other.**
+
+| Branch | Model | Classes | Purpose |
+|---|---|---|---|
+| `feature/clean-architecture-yolo-detector` | `soap_v7.onnx` | soap, soap-cover | Soap detection |
+| `feature/bottle-detector` | `best_bottle.onnx` | bottle, bottles, capped-bottle | Bottle detection |
+
+When switching branches, you must also replace the model file in the project root:
+- Switching **to soap branch**: copy `soap_v7.onnx` into the project root
+- Switching **to bottle branch**: copy `best_bottle.onnx` into the project root
+
+Model files are **NOT committed to git** (excluded by `*.onnx` in `.gitignore`).
 
 ---
 
@@ -21,15 +39,15 @@ The Soap Detector loads a YOLO ONNX model (`soap_v7.onnx`) and lets the user det
 
 ```
 DeepLearning/
-|- Application/                  ← Use cases, interfaces, configuration
-|- Domain/                      ← Core business objects (no external deps)
-|- Infrastructure/              ← ONNX Runtime, OpenCV, rendering, paths
-|- Presentation/                ← Console UI (banners, prompts, output)
-|- Program.cs                   ← Composition root — wires everything together
-|- publish/                     ← Deployable Windows executable
-|- project-structure/            ← This folder: documentation
-|- sample.jpg                   ← Default test image
-|- soap_v7.onnx                 ← Your trained model
+|- Application/              ← Use cases, interfaces, configuration
+|- Domain/                   ← Core business objects (no external deps)
+|- Infrastructure/           ← ONNX Runtime, OpenCV, rendering, paths
+|- Presentation/             ← Console UI (banners, prompts, output)
+|- Program.cs                ← Composition root — wires everything together
+|- publish/                  ← Deployable Windows executable
+|- project-structure/         ← This folder: documentation
+|- sample.jpg                ← Default test image
+|- soap_v7.onnx              ← YOUR trained model (local only, not in git)
 ```
 
 ### Layer Responsibilities
@@ -171,7 +189,7 @@ Because the project is layered, these additions are low-risk:
 
 | File | What it contains |
 |---|---|
-| `README.md` (this file) | Architecture overview, file reference, configuration guide |
+| `README.md` (this file) | Architecture overview, file reference, configuration guide, branch structure |
 | `PROFESSIONAL-GUIDE.md` | End-user guide: how to run, image path examples, deployment, troubleshooting |
 | `PROJECT-TREE.txt` | Quick folder tree map |
 | `diagrams/` | Visual diagrams (pipeline, CHW format, NMS, tensor shapes) |

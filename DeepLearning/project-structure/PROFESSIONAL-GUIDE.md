@@ -2,7 +2,8 @@
 
 > **Last Updated:** March 2026  
 > **Version:** 1.0.0  
-> **Platform:** Windows x64
+> **Platform:** Windows x64  
+> **Branch:** `feature/clean-architecture-yolo-detector` (SOAP version — see `feature/bottle-detector` for bottle detection)
 
 ---
 
