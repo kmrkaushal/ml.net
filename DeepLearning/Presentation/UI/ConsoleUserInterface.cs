@@ -1,3 +1,67 @@
+// =============================================================================
+// ConsoleUserInterface — Full Console UI Implementation (514 lines)
+// =============================================================================
+//
+// FILE:         ConsoleUserInterface.cs
+// LAYER:        Presentation (UI)
+// DEPENDENCIES: System.Windows.Forms (OpenFileDialog), Application (interfaces,
+//               DetectionOptions, ImageDetectionReport), Domain (DetectionResult,
+//               InputSource)
+// DEPENDENTS:   Program.cs, RunDetectionApplication, WebcamDetectionLoop
+//
+// PURPOSE:
+//   Complete console-based user interface for the application. Handles all user
+//   interaction: ASCII art banner, colored output, numbered menus, file dialogs,
+//   confidence bar visualization, detection reports, and graceful exit.
+//
+// FEATURE BREAKDOWN:
+//
+//   VISUAL ELEMENTS:
+//   - ASCII art banner (lines 22-34): "DEEPLEARNING" in block letters
+//   - Box-drawing characters (lines 15-20): Unicode chars for clean borders
+//   - Color coding: Cyan (prompts), Yellow (options), Green (success),
+//                   Red (errors), DarkGray (info), White (headers)
+//   - Confidence bars: [████████░░] 64% — visual representation of confidence
+//
+//   MENU SYSTEM:
+//   - Input source selection: Webcam (1) or Image File (2)
+//   - Image path options: Browse (1), App folder (2), Type path (3), Default (4)
+//   - Continue/Exit: Run again (1) or Quit (2)
+//   - All menus have input validation with retry loops
+//
+//   FILE DIALOGS:
+//   - BrowseForOnnxFile(): WinForms OpenFileDialog for .onnx files
+//   - BrowseForImageFile(): WinForms OpenFileDialog for image files
+//   - BrowseForImage(): Lists available images in app folder with numbered menu
+//
+//   DETECTION DISPLAY:
+//   - Groups detections by class name
+//   - Shows count per class and top confidence
+//   - Displays top 3 detections per class with confidence bars
+//   - Shows "... and N more" for additional detections
+//
+//   PRINTING UTILITIES (private methods):
+//   - PrintBanner()       — ASCII art in cyan
+//   - PrintBoxedContent() — Draws a box around content lines
+//   - PrintHeader()       — Section header with decorative line
+//   - PrintOption()       — Numbered menu item with color coding
+//   - PrintLine()         — Blank line or custom text
+//   - PrintPrompt()       — Colored input prompt
+//   - PrintInfo/Success/Error/Warning() — Colored message output
+//   - PrintDetectionItem() — Confidence bar + coordinates
+//   - BuildConfidenceBar() — Creates visual bar from float (0.0-1.0)
+//
+// DESIGN NOTES:
+//   - This is the largest file (514 lines) because it handles ALL user interaction
+//   - Every output method follows the same pattern: set color → write → reset color
+//   - Console.ForegroundColor/ResetColor() pattern is critical — forgetting to
+//     reset causes all subsequent output to inherit the color
+//   - WinForms OpenFileDialog requires [STAThread] on Main() (set in Program.cs)
+//   - The confidence bar uses Unicode block characters: █ (filled) and ░ (empty)
+//   - Input validation: all menus use while(true) loops that only break on valid input
+//
+// =============================================================================
+
 using System;
 using System.Linq;
 using System.IO;
