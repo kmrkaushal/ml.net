@@ -1,7 +1,19 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+# Root gitignore for ML.Net solution
 
-/DeepLearning/bin/Debug/net8.0
-/DeepLearning/obj/Debug/net8.0
-/DeepLearning/obj
+# Visual Studio / VS state
+.vs/
+*.suo
+*.user
+
+# Build outputs (any project under this repo)
+bin/
+obj/
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# OS junk
+Thumbs.db
+.DS_Store
+
