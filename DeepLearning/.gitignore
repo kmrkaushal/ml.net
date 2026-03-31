@@ -1,0 +1,27 @@
+# Build outputs
+bin/
+obj/
+publish/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.suo
+
+# JetBrains Rider / other IDEs
+.idea/
+*.DotSettings.user
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Large model files (use NuGet or separate asset download for these)
+*.onnx
+
+# Generated images / output
+*.jpg
+*.png
+*.jpeg
+output.*

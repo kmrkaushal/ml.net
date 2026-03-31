@@ -1,0 +1,26 @@
+using DeepLearning.Application.Configuration;
+using DeepLearning.Application.Models;
+using DeepLearning.Domain.Entities;
+using DeepLearning.Domain.Enums;
+
+namespace DeepLearning.Application.Abstractions;
+
+public interface IUserInterface
+{
+    void ShowWelcome(DetectionOptions options);
+    InputSource PromptForInputSource();
+    string PromptForImagePath(string defaultImagePath, IProjectPathProvider pathProvider);
+    void ShowImageDetectionReport(ImageDetectionReport report, string[] classLabels);
+    void ShowWebcamInstructions(DetectionOptions options);
+    void ShowDetections(IReadOnlyList<DetectionResult> detections, string[] classLabels);
+    void ShowInfo(string message);
+    void ShowError(string message);
+    void ShowSuccess(string message);
+    void ShowPrompt(string label);
+    bool PromptForContinue();
+    void ShowExitMessage();
+
+    string? BrowseForOnnxFile();
+    string[] PromptForClassLabels(int expectedCount);
+    string? BrowseForImageFile();
+}
