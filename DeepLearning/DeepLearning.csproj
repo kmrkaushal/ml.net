@@ -7,6 +7,8 @@
     <Nullable>enable</Nullable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <SupportedOSPlatform>windows</SupportedOSPlatform>
+    <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>DeepLearning.Program</StartupObject>
     <AssemblyName>SoapDetector</AssemblyName>
     <Product>Soap Detector</Product>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>

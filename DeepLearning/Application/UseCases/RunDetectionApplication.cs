@@ -4,21 +4,6 @@ using DeepLearning.Domain.Enums;
 
 namespace DeepLearning.Application.UseCases;
 
-/// <summary>
-/// Orchestrates the top-level detection application workflow.
-/// Presents the user with a choice between webcam and existing-image modes,
-/// then delegates to the appropriate use case while handling errors uniformly.
-///
-/// <para>
-/// This class runs in a loop: after each detection run (webcam or image),
-/// the user is asked whether to return to the menu or exit the app.
-/// </para>
-///
-/// <para>
-/// This class is the single entry point for running the application.
-/// It is stateless and depends only on abstractions, making it easy to test.
-/// </para>
-/// </summary>
 public sealed class RunDetectionApplication
 {
     private readonly DetectionOptions _options;
@@ -27,14 +12,6 @@ public sealed class RunDetectionApplication
     private readonly DetectImageFromFileUseCase _detectImageFromFileUseCase;
     private readonly IProjectPathProvider _pathProvider;
 
-    /// <summary>
-    /// Creates a new application runner with all its dependencies.
-    /// </summary>
-    /// <param name="options">Detection configuration such as thresholds and paths.</param>
-    /// <param name="userInterface">The UI implementation for console interaction.</param>
-    /// <param name="webcamDetectionLoop">The webcam capture and display loop.</param>
-    /// <param name="detectImageFromFileUseCase">The use case for processing a single image file.</param>
-    /// <param name="pathProvider">Resolves relative and absolute file paths.</param>
     public RunDetectionApplication(
         DetectionOptions options,
         IUserInterface userInterface,
@@ -49,10 +26,6 @@ public sealed class RunDetectionApplication
         _pathProvider = pathProvider;
     }
 
-    /// <summary>
-    /// Starts the application. Displays the welcome screen, then enters a loop where
-    /// the user picks a mode, runs detection, and is asked whether to continue or exit.
-    /// </summary>
     public void Execute()
     {
         _userInterface.ShowWelcome(_options);
@@ -91,7 +64,6 @@ public sealed class RunDetectionApplication
             }
 
             bool shouldContinue = _userInterface.PromptForContinue();
-
             if (!shouldContinue)
             {
                 _userInterface.ShowExitMessage();
