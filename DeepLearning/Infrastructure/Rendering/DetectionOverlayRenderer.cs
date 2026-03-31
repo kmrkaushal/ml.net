@@ -1,39 +1,4 @@
-// =============================================================================
-// DetectionOverlayRenderer — Bounding Box & Label Drawer (GDI+)
-// =============================================================================
-//
-// FILE:         DetectionOverlayRenderer.cs
-// LAYER:        Infrastructure (Rendering)
-// DEPENDENCIES: System.Drawing (GDI+), Application (DetectionOptions)
-// DEPENDENTS:   DetectImageFromFileUseCase, WebcamDetectionLoop
-//
-// PURPOSE:
-//   Draws bounding boxes and class labels on images for detected objects.
-//   Uses GDI+ (System.Drawing) to render overlays without modifying the source.
-//
-// RENDERING PIPELINE (per detection):
-//   1. Create a copy of the source image (don't modify original)
-//   2. Create GDI+ drawing objects: Pen, Font, Brushes
-//   3. For each detection:
-//      a. Draw DeepSkyBlue rectangle (2px) at bounding box coordinates
-//      b. Format label text: "className confidence" (e.g., "soap 0.72")
-//      c. Measure text size to calculate label background dimensions
-//      d. Position label above the box (clamped to image top edge)
-//      e. Fill semi-transparent dark background (ARGB: 200, 15, 23, 42)
-//      f. Draw white text with 4px padding
-//   4. Return the annotated image
-//
-// DESIGN NOTES:
-//   - All GDI+ objects (Graphics, Pen, Font, Brush) are wrapped in 'using'
-//     statements — they wrap unmanaged resources and MUST be disposed to
-//     prevent memory leaks
-//   - The source image is NEVER modified — a new Bitmap is created (line 28)
-//   - Label positioning: placed above the box, but clamped to Y=0 so it
-//     never goes off the top edge of the image
-//   - Class label lookup is safe: if ClassId is out of range, falls back
-//     to "class N" instead of throwing an exception
-//
-// =============================================================================
+// GDI+ renderer that draws bounding boxes and class labels on detected images.
 
 using System.Drawing;
 using DeepLearning.Application.Abstractions;

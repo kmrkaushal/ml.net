@@ -1,44 +1,4 @@
-// =============================================================================
-// ImagePreprocessor — Bitmap to CHW Tensor Converter
-// =============================================================================
-//
-// FILE:         ImagePreprocessor.cs
-// LAYER:        Infrastructure (Detection)
-// DEPENDENCIES: System.Drawing (Bitmap, Color, Size)
-// DEPENDENTS:   OnnxObjectDetector (internal use only)
-//
-// PURPOSE:
-//   Converts a System.Drawing.Bitmap into a CHW (Channels × Height × Width)
-//   normalized float array — the exact format that YOLO neural networks expect
-//   as input.
-//
-// CONVERSION PIPELINE:
-//   1. Resize: Scale image to target dimensions (typically 640×640)
-//      - Uses bilinear interpolation (default Bitmap constructor behavior)
-//   2. Channel separation: HWC → CHW format
-//      - Before (interleaved): [R0,G0,B0, R1,G1,B1, ...] — each pixel has all 3 channels together
-//      - After  (planar):     [R0,R1,..., G0,G1,..., B0,B1,...] — all R, then all G, then all B
-//   3. Normalization: Divide each value by 255
-//      - Before: 0-255 (byte range, as stored in the image)
-//      - After:  0.0-1.0 (float range, as expected by the neural network)
-//
-// OUTPUT LAYOUT (for 640×640 image):
-//   Array length: 3 × 640 × 640 = 1,228,800 floats
-//   Indices 0 to 409,599:       Red channel (all pixels)
-//   Indices 409,600 to 819,199: Green channel (all pixels)
-//   Indices 819,200 to 1,228,799: Blue channel (all pixels)
-//
-// DESIGN NOTES:
-//   - Static class: no state, no instances needed — pure function
-//   - No external dependencies beyond System.Drawing
-//   - GetPixel() is not the fastest approach (LockBits would be faster),
-//     but it's simple and correct. For production with high FPS needs,
-//     consider using Bitmap.LockBits() for direct memory access.
-//   - The CHW format is critical: neural networks expect channels as separate
-//     planes, not interleaved per-pixel. This is the #1 source of bugs when
-//     implementing custom detection pipelines.
-//
-// =============================================================================
+// Converts a Bitmap to a CHW-normalized float array for YOLO model input.
 
 using System.Drawing;
 

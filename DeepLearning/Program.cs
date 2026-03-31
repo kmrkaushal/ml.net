@@ -1,42 +1,5 @@
-// =============================================================================
-// SoapDetector — Composition Root
-// =============================================================================
-//
-// FILE:         Program.cs
-// LAYER:        Composition Root (outside Clean Architecture layers)
-// DEPENDENCIES: All layers (Application, Infrastructure, Presentation, Domain)
-//
-// PURPOSE:
-//   This is the single entry point and composition root of the application.
-//   It is the ONLY place where concrete implementations are instantiated and
-//   wired together. Every other file in the project depends on abstractions
-//   (interfaces), not concretions — this is the Dependency Inversion Principle.
-//
-// RESPONSIBILITIES:
-//   1. Create DetectionOptions with default configuration
-//   2. Ask user: custom ONNX model or default?
-//   3. If custom: browse for .onnx, infer class count, prompt for labels
-//   4. Instantiate all concrete implementations (detector, renderer, UI, etc.)
-//   5. Wire dependencies into use case classes
-//   6. Start the main application loop via RunDetectionApplication.Execute()
-//
-// RUNTIME FLOW:
-//   Main() → PromptLoadCustomModel() → LoadCustomModelFlow() → Wire deps → Execute()
-//
-// KEY DESIGN DECISIONS:
-//   - [STAThread] is required for WinForms OpenFileDialog (used in ConsoleUserInterface)
-//   - OnnxObjectDetector is wrapped in 'using' because it implements IDisposable
-//     (the ONNX InferenceSession holds unmanaged resources)
-//   - All dependencies are passed via constructor injection — no DI container needed
-//     for an application of this size
-//
-// TO EXTEND:
-//   - Swap detection engine: change line 25 to new YourDetector(options)
-//   - Swap UI: change line 18 to new YourUserInterface()
-//   - Swap renderer: change line 27 to new YourRenderer(options)
-//   - Zero changes needed in Application or Domain layers
-//
-// =============================================================================
+// SoapDetector — Composition root: wires all dependencies and starts the application.
+// See ARCHITECTURE-AND-CODE-REFERENCE.md for full documentation.
 
 using DeepLearning.Application.Abstractions;
 using DeepLearning.Application.Configuration;

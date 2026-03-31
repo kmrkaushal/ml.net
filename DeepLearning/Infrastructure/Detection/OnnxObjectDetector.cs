@@ -1,48 +1,4 @@
-// =============================================================================
-// OnnxObjectDetector — YOLO Detection Engine (ONNX Runtime)
-// =============================================================================
-//
-// FILE:         OnnxObjectDetector.cs
-// LAYER:        Infrastructure (Detection)
-// DEPENDENCIES: Microsoft.ML.OnnxRuntime, Application (IObjectDetector,
-//               DetectionOptions), Domain (DetectionResult),
-//               ImagePreprocessor, NmsProcessor
-// DEPENDENTS:   Program.cs, WebcamDetectionLoop, DetectImageFromFileUseCase
-//
-// PURPOSE:
-//   This is the most complex file in the project. It implements the complete
-//   YOLO detection pipeline using ONNX Runtime:
-//   1. Load ONNX model into InferenceSession
-//   2. Preprocess input image (resize, CHW conversion, normalize)
-//   3. Run model inference
-//   4. Parse raw output tensor into DetectionResult objects
-//   5. Apply Non-Maximum Suppression to remove duplicate boxes
-//
-// KEY METHODS:
-//   Detect(Bitmap)        — Main detection pipeline (lines 39-53)
-//   InferClassCount()     — Auto-detect number of classes from model output (lines 63-92)
-//   ParseDetections()     — Convert raw tensor to DetectionResult list (lines 101-163)
-//   FindDetectionHead()   — Find the correct output tensor (lines 170-192)
-//
-// YOLO OUTPUT TENSOR:
-//   Shape: [1, C, N] (channels-first, YOLOv8) or [1, N, C] (channels-last, YOLOv11)
-//   Where: C = 4 (box params: centerX, centerY, width, height) + classCount
-//          N = 8400 (number of candidate boxes/anchors)
-//   Per box: [centerX, centerY, width, height, class0_conf, class1_conf, ...]
-//
-// COORDINATE CONVERSION:
-//   Model outputs center-format boxes in 640×640 space.
-//   This class converts them to corner-format (X1,Y1,X2,Y2) in original image space.
-//   Formula: X1 = (centerX - width/2) × (originalWidth / 640)
-//
-// DESIGN NOTES:
-//   - 'sealed': cannot be inherited
-//   - Implements IDisposable: InferenceSession holds unmanaged resources
-//   - Supports both YOLOv8 and YOLOv11 output layouts automatically
-//   - FindDetectionHead() uses heuristics: looks for 3D tensor where
-//     min(dim) >= 6 (at least 4 box + 2 classes) and max(dim) >= 1000
-//
-// =============================================================================
+// YOLO detection engine using ONNX Runtime: preprocess → infer → parse → NMS.
 
 using System.Drawing;
 using DeepLearning.Application.Abstractions;

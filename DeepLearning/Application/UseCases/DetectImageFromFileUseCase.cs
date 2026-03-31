@@ -1,38 +1,4 @@
-// =============================================================================
-// DetectImageFromFileUseCase — Single Image Detection Workflow
-// =============================================================================
-//
-// FILE:         DetectImageFromFileUseCase.cs
-// LAYER:        Application (Use Cases)
-// DEPENDENCIES: Application (IObjectDetector, IImageRenderer, IProjectPathProvider,
-//               DetectionOptions), Domain (DetectionResult), System.Diagnostics
-// DEPENDENTS:   RunDetectionApplication, Program.cs
-//
-// PURPOSE:
-//   Encapsulates the complete workflow for detecting objects in a single image
-//   file. This is a pure pipeline: input → transform → output.
-//
-// PIPELINE STEPS:
-//   1. ResolveImagePath() — convert user input (empty/relative/absolute) to absolute path
-//   2. Validate — throw FileNotFoundException if file doesn't exist
-//   3. Load — create Bitmap from file (using statement ensures disposal)
-//   4. Detect — run IObjectDetector.Detect() → list of DetectionResult
-//   5. Render — run IImageRenderer.DrawDetections() → annotated Bitmap
-//   6. Save — write annotated Bitmap to output.jpg
-//   7. Open — optionally launch the output image in the default viewer
-//   8. Report — return ImageDetectionReport with input/output paths and detections
-//
-// DESIGN NOTES:
-//   - The 'using' statements on lines 73 and 75 ensure Bitmaps are disposed
-//     even if an exception occurs (critical for GDI+ resource management)
-//   - ResolveImagePath() handles three cases:
-//     * Empty/whitespace → use default image from config
-//     * Absolute path → normalize and return
-//     * Relative path → resolve against project root
-//   - This use case is side-effect free from the perspective of its return value
-//     (all I/O is encapsulated in the report), making it easy to test
-//
-// =============================================================================
+// Single-image detection workflow: resolve path → detect → render → save → report.
 
 using System.Diagnostics;
 using System.Drawing;

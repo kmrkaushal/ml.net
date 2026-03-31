@@ -1,46 +1,4 @@
-// =============================================================================
-// ProjectPathProvider — Smart Path Resolver (Dev + Deployed)
-// =============================================================================
-//
-// FILE:         ProjectPathProvider.cs
-// LAYER:        Infrastructure (Pathing)
-// DEPENDENCIES: System.IO, System.Linq
-// DEPENDENTS:   DetectImageFromFileUseCase, RunDetectionApplication,
-//               ConsoleUserInterface
-//
-// PURPOSE:
-//   Resolves file paths in a way that works both during development and after
-//   deployment. This solves the problem that files are in different locations
-//   depending on how the app is run.
-//
-// THE PROBLEM:
-//   During development:
-//     - App runs from: bin/Debug/net8.0-windows/
-//     - Files are in:  project root (DeepLearning/)
-//     - Need to go UP 3 levels to find files
-//
-//   After publishing:
-//     - App runs from: publish/
-//     - Files are in:  publish/ (same folder as exe)
-//     - No navigation needed
-//
-// DETECTION LOGIC (constructor):
-//   1. Get AppContext.BaseDirectory (where the exe is running)
-//   2. Calculate dev root: go up 3 levels (bin/Debug/net8.0-windows → project root)
-//   3. Check if DeepLearning.csproj exists at dev root
-//      - YES → development mode → use dev root
-//      - NO  → deployed mode → use base directory
-//
-// DESIGN NOTES:
-//   - The .csproj file check is the key: it only exists in the project root,
-//     never in a published folder. This is a reliable dev/deploy detector.
-//   - GetImageFiles() filters by extension (.jpg, .jpeg, .png, .bmp, .gif)
-//     and returns just filenames (not full paths) for display in the UI
-//   - GetAbsolutePath() handles both cases: if the path is already absolute,
-//     it just normalizes it (removes .., resolves symlinks); if relative,
-//     it resolves against the project root
-//
-// =============================================================================
+// Smart path resolver that auto-detects dev vs. deployed environment.
 
 using System;
 using System.IO;
