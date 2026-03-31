@@ -84,8 +84,22 @@ internal static class Program
         userInterface.ShowInfo($"  Model selected: {Path.GetFileName(onnxPath)}");
         options.ModelPath = onnxPath;
 
-        int expectedClasses = PromptForModelClassCount(userInterface);
-        string[] classLabels = userInterface.PromptForClassLabels(expectedClasses);
+        int inferredClassCount;
+        try
+        {
+            using OnnxObjectDetector probeDetector = new(options);
+            inferredClassCount = probeDetector.InferClassCount();
+            userInterface.ShowInfo($"  Model inference: detected {inferredClassCount} class(es).");
+        }
+        catch (Exception ex)
+        {
+            userInterface.ShowError($"  Could not infer class count from the ONNX output: {ex.Message}");
+            userInterface.ShowInfo("");
+            userInterface.ShowInfo("  Falling back to manual class count entry.");
+            inferredClassCount = PromptForModelClassCount(userInterface);
+        }
+
+        string[] classLabels = userInterface.PromptForClassLabels(inferredClassCount);
         options.ClassLabels = classLabels;
 
         userInterface.ShowInfo("");

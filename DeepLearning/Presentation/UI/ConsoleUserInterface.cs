@@ -283,7 +283,16 @@ public sealed class ConsoleUserInterface : IUserInterface
                 continue;
             }
 
-            PrintSuccess($"✓ {labels.Length} class(es): {string.Join(", ", labels)}");
+            if (labels.Length != expectedCount)
+            {
+                PrintError($"✗ Expected exactly {expectedCount} class name(s), but got {labels.Length}.");
+                PrintInfo("Tip: if your model detects more objects than you think, add the missing class labels.");
+                PrintLine();
+                continue;
+            }
+
+            string mapping = string.Join(", ", labels.Select((label, index) => $"[{index}] {label}"));
+            PrintSuccess($"✓ {labels.Length} class(es) configured: {mapping}");
             return labels;
         }
     }
