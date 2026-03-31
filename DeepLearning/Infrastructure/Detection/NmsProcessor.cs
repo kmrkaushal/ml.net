@@ -1,3 +1,46 @@
+// =============================================================================
+// NmsProcessor — Non-Maximum Suppression
+// =============================================================================
+//
+// FILE:         NmsProcessor.cs
+// LAYER:        Infrastructure (Detection)
+// DEPENDENCIES: Domain (DetectionResult)
+// DEPENDENTS:   OnnxObjectDetector (internal use only)
+//
+// PURPOSE:
+//   Removes duplicate/overlapping bounding boxes from detection results.
+//   YOLO models output thousands of candidate boxes per image — many of them
+//   overlap the same object. NMS keeps only the most confident box per object.
+//
+// ALGORITHM (Greedy NMS):
+//   1. Group detections by class ID (each class is processed independently)
+//   2. For each class group:
+//      a. Sort by confidence (highest first)
+//      b. Take the highest-confidence box — KEEP it
+//      c. Calculate IoU between the kept box and all remaining boxes
+//      d. DISCARD any box with IoU > threshold (too much overlap = same object)
+//      e. Repeat until no candidates remain
+//
+// IoU (Intersection over Union):
+//   IoU = Overlap Area / Union Area
+//   IoU = 0.0 → boxes don't overlap at all
+//   IoU = 0.5 → boxes overlap by 50%
+//   IoU = 1.0 → boxes are identical
+//
+//   With threshold 0.45: if two boxes overlap by more than 45%, the
+//   lower-confidence one is discarded.
+//
+// DESIGN NOTES:
+//   - Static class: pure function, no state
+//   - Processes each class independently: a box for class A and a box for
+//     class B can overlap without one being discarded (they're different objects)
+//   - The 1e-6f epsilon in CalculateIoU prevents division by zero when
+//     two boxes have zero area (degenerate case)
+//   - Time complexity: O(n²) per class group — fine for typical detection
+//     counts (50-200 candidates), but would need optimization for thousands
+//
+// =============================================================================
+
 using DeepLearning.Domain.Entities;
 
 namespace DeepLearning.Infrastructure.Detection;
