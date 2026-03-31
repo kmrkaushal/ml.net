@@ -52,6 +52,45 @@ public sealed class OnnxObjectDetector : IObjectDetector
         return NmsProcessor.Apply(rawDetections, _options.IouThreshold);
     }
 
+    /// <summary>
+    /// Infers the number of classes directly from the model output tensor shape.
+    /// </summary>
+    /// <remarks>
+    /// YOLO-style outputs are assumed to be:
+    ///   [1, C, N] (channels-first) or [1, N, C] (channels-last),
+    /// where C = 4 + classCount.
+    /// </remarks>
+    public int InferClassCount()
+    {
+        float[] chwData = new float[3 * _options.ModelWidth * _options.ModelHeight];
+        var inputTensor = new DenseTensor<float>(
+            chwData,
+            [1, 3, _options.ModelHeight, _options.ModelWidth]);
+
+        var inputs = new List<NamedOnnxValue>
+        {
+            NamedOnnxValue.CreateFromTensor(_inputName, inputTensor)
+        };
+
+        using IDisposableReadOnlyCollection<DisposableNamedOnnxValue> results = _session.Run(inputs);
+        (Tensor<float> tensor, int[] dimensions) = FindDetectionHead(results);
+
+        // For YOLO outputs, classCount is (channelCount - 4), where the 4 are box params.
+        int dimA = dimensions[1];
+        int dimB = dimensions[2];
+        bool isChannelsFirst = dimA < dimB;
+        int channelCount = isChannelsFirst ? dimA : dimB;
+        int classCount = channelCount - 4;
+
+        if (classCount <= 0)
+        {
+            throw new InvalidOperationException(
+                $"Unable to infer class count from model output. Computed: {classCount}.");
+        }
+
+        return classCount;
+    }
+
     /// <inheritdoc />
     public void Dispose() => _session.Dispose();
 
