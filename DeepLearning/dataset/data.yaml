@@ -1,0 +1,9 @@
+path: D:/Ammar/YOLO/ml.net/DeepLearning/dataset
+train: images/train
+val: images/val
+
+nc: 3
+names:
+  0: bottle
+  1: soap
+  2: soap-cover

@@ -1,18 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\AI For Developers-The Starting Point\\DeepLearning\\",
+  "WorkspaceRootPath": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ai for developers-the starting point\\deeplearning\\yolorealtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:yolorealtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ai for developers-the starting point\\deeplearning\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ai for developers-the starting point\\deeplearning\\yolov8onnx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:yolov8onnx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\architecture-and-code-reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:architecture-and-code-reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\yolo-battles-values\\whatsapp image 2026-03-30 at 2.57.42 pm (1).txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:yolo-battles-values\\whatsapp image 2026-03-30 at 2.57.42 pm (1).txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\scripts\\1_prepare_dataset.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:scripts\\1_prepare_dataset.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\infrastructure\\rendering\\detectionoverlayrenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:infrastructure\\rendering\\detectionoverlayrenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\domain\\enums\\inputsource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:domain\\enums\\inputsource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\domain\\entities\\detectionresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:domain\\entities\\detectionresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\infrastructure\\detection\\onnxobjectdetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:infrastructure\\detection\\onnxobjectdetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\application\\usecases\\detectimagefromfileusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:application\\usecases\\detectimagefromfileusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\application\\usecases\\rundetectionapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:application\\usecases\\rundetectionapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|d:\\ammar\\yolo\\ml.net\\deeplearning\\application\\models\\imagedetectionreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FD07F6-4731-8449-362E-3FBE1E843464}|DeepLearning.csproj|solutionrelative:application\\models\\imagedetectionreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +54,155 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 12,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ARCHITECTURE-AND-CODE-REFERENCE.md",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\ARCHITECTURE-AND-CODE-REFERENCE.md",
+              "RelativeDocumentMoniker": "ARCHITECTURE-AND-CODE-REFERENCE.md",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\ARCHITECTURE-AND-CODE-REFERENCE.md",
+              "RelativeToolTip": "ARCHITECTURE-AND-CODE-REFERENCE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-01T17:10:25.317Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "YoloV8Onnx.cs",
-              "DocumentMoniker": "D:\\AI For Developers-The Starting Point\\DeepLearning\\YoloV8Onnx.cs",
-              "RelativeDocumentMoniker": "YoloV8Onnx.cs",
-              "ToolTip": "D:\\AI For Developers-The Starting Point\\DeepLearning\\YoloV8Onnx.cs",
-              "RelativeToolTip": "YoloV8Onnx.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Title": "WhatsApp Image 2026-03-30 at 2.57.42 PM (1).txt",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\yolo-battles-values\\WhatsApp Image 2026-03-30 at 2.57.42 PM (1).txt",
+              "RelativeDocumentMoniker": "yolo-battles-values\\WhatsApp Image 2026-03-30 at 2.57.42 PM (1).txt",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\yolo-battles-values\\WhatsApp Image 2026-03-30 at 2.57.42 PM (1).txt",
+              "RelativeToolTip": "yolo-battles-values\\WhatsApp Image 2026-03-30 at 2.57.42 PM (1).txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-04-01T11:13:29.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "1_prepare_dataset.py",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\scripts\\1_prepare_dataset.py",
+              "RelativeDocumentMoniker": "scripts\\1_prepare_dataset.py",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\scripts\\1_prepare_dataset.py",
+              "RelativeToolTip": "scripts\\1_prepare_dataset.py",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANASURBVEhLtZVPaBxlGMZ/s7uTNazZMW3Y/BGxRFOkWsQU3VAPxoJ6KiKIItJDwTnkomhhK\u002BRg7En3losHFwlBRDx5KGgPHhQruhKaUChaiCbWuNrGtttunN3Z\u002Bb7v9TCb7GTI6HrwgZf55nln3ud9n\u002B9jBv5PiIgV51zXlTj3L3i0Uqksxclt7CkwPz8fp/fE7Oxs4Pv\u002BlSAIXq5UKtV4HiAVJ/4LHMexS6XSPtu2P3JdtxjP808C1Wo1MaIoFAqDEZEju5J7wXVd8Tyvp5ibm9tZr62t3ZiZmVl1Xfe\u002BaL3ECXpFuVymXC6zuLg4mE6nR4DD0XwmehNF3IooisXQ7lKptItfWFhYWllZ2cUlTlAsFveMqakpbNvG0xYb9TbrN1rcbBoymQyO42TjdRInSMJtz\u002Bedcz\u002Bwvnkbr\u002BmjlUKrgOF8ljMvPP3I8vKyHX0\u002BcYL4ydmO9bpif86m/OJkp3gYv27e4uzSL9np6emD0TqJAnFrtsMY4Zsff\u002BfUh99itMZoFV6VYstrMTAwcGe0TqIAgNYarTVWKsXSlS0\u002B/r7GhbU/efLQCEcPFnjq8Bh2GrRWaK0xxvDEZP1NaXwuElw7LyL7Evcgeorq\u002BQk\u002B\u002BHJ1x\u002B\u002BuNeHadO6NGPC\u002BDl9qXXqcoVNvJU4QteXcxVqny7DT7rrLGa2YGAYQ0C1oXQZ19dlEgSg2NhuYTqdGKdJiODCUY3w4z/hInvtHHZ47Os5LR34C5YFugvagXbs38WsatejdaoAKArQKuHuwn/dP\u002BPTLatgthNegBmoLjA\u002BmDdqHkdPJmxy1aCyfxXSsmDmWoz/4CtRvoGoQbID/MwS3Op03u1P03XMzUSCKYw\u002BN7mymc4fqJkwQWqE6haPr7ATYo5/2ZBFAM3\u002BA2vUGxx9uUpBPQgtMG/oOgZUFUeGHIZUD0nDXM9fIDD2WKBBHKpXCsiz6zGW4/l5Y3Pig2yAajECuCGOn3wbOA1XLsho9WQRgjEFrjZCWrtcdW/a/AkMnIdUPgGVZX1iW1SDpnxznonjj9dcuPVD47kHqn4Ui21PkJglGz7TtrPO8ZVln4\u002B/1DBFJi8irohor8tdFJVsXRNp/rItIVUROiMjx6PN/A\u002BOzH72MzdOgAAAAAElFTkSuQmCC",
+              "WhenOpened": "2026-04-01T11:13:16.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DetectionOverlayRenderer.cs",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Infrastructure\\Rendering\\DetectionOverlayRenderer.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Rendering\\DetectionOverlayRenderer.cs",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Infrastructure\\Rendering\\DetectionOverlayRenderer.cs",
+              "RelativeToolTip": "Infrastructure\\Rendering\\DetectionOverlayRenderer.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAA+wDIAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T14:34:47.978Z",
+              "WhenOpened": "2026-03-31T13:25:58.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InputSource.cs",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Domain\\Enums\\InputSource.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\InputSource.cs",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Domain\\Enums\\InputSource.cs",
+              "RelativeToolTip": "Domain\\Enums\\InputSource.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T13:25:30.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DetectionResult.cs",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Domain\\Entities\\DetectionResult.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\DetectionResult.cs",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Domain\\Entities\\DetectionResult.cs",
+              "RelativeToolTip": "Domain\\Entities\\DetectionResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T13:25:21.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OnnxObjectDetector.cs",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Infrastructure\\Detection\\OnnxObjectDetector.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Detection\\OnnxObjectDetector.cs",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Infrastructure\\Detection\\OnnxObjectDetector.cs",
+              "RelativeToolTip": "Infrastructure\\Detection\\OnnxObjectDetector.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAkwAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T13:22:05.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DetectImageFromFileUseCase.cs",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Application\\UseCases\\DetectImageFromFileUseCase.cs",
+              "RelativeDocumentMoniker": "Application\\UseCases\\DetectImageFromFileUseCase.cs",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Application\\UseCases\\DetectImageFromFileUseCase.cs",
+              "RelativeToolTip": "Application\\UseCases\\DetectImageFromFileUseCase.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAuwAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T13:15:43.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RunDetectionApplication.cs",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Application\\UseCases\\RunDetectionApplication.cs",
+              "RelativeDocumentMoniker": "Application\\UseCases\\RunDetectionApplication.cs",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Application\\UseCases\\RunDetectionApplication.cs",
+              "RelativeToolTip": "Application\\UseCases\\RunDetectionApplication.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAF0AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T12:58:11.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ImageDetectionReport.cs",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Application\\Models\\ImageDetectionReport.cs",
+              "RelativeDocumentMoniker": "Application\\Models\\ImageDetectionReport.cs",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Application\\Models\\ImageDetectionReport.cs",
+              "RelativeToolTip": "Application\\Models\\ImageDetectionReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T12:58:04.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "YoloRealTime.cs",
-              "DocumentMoniker": "D:\\AI For Developers-The Starting Point\\DeepLearning\\YoloRealTime.cs",
-              "RelativeDocumentMoniker": "YoloRealTime.cs",
-              "ToolTip": "D:\\AI For Developers-The Starting Point\\DeepLearning\\YoloRealTime.cs",
-              "RelativeToolTip": "YoloRealTime.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCQAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T14:30:25.627Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\AI For Developers-The Starting Point\\DeepLearning\\Program.cs",
+              "DocumentMoniker": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\AI For Developers-The Starting Point\\DeepLearning\\Program.cs",
+              "ToolTip": "D:\\Ammar\\YOLO\\ml.net\\DeepLearning\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAQwGwAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-14T10:52:01.475Z",
               "EditorCaption": ""

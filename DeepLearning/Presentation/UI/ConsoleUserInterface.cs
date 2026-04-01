@@ -9,6 +9,7 @@ using DeepLearning.Application.Configuration;
 using DeepLearning.Application.Models;
 using DeepLearning.Domain.Entities;
 using DeepLearning.Domain.Enums;
+using DeepLearning.Infrastructure.ModelMetadata;
 
 namespace DeepLearning.Presentation.UI;
 
@@ -39,13 +40,27 @@ public sealed class ConsoleUserInterface : IUserInterface
     {
         Console.Clear();
         PrintBanner();
-        PrintBoxedContent([
+
+        // Try to get model summary from catalog for richer display
+        var summary = ModelCatalog.TryGetSummary(options.ModelPath);
+        var infoLines = new List<string>
+        {
             "✓ Application started successfully",
-            $"  Model     : {options.ModelPath}",
+            $"  Model     : {Path.GetFileName(options.ModelPath)}{(summary != null ? $" ({summary.ModelName})" : "")}",
             $"  Classes   : {string.Join(", ", options.ClassLabels)}",
             $"  Threshold : {options.ConfidenceThreshold:P0}",
             $"  IoU       : {options.IouThreshold:P0}"
-        ]);
+        };
+
+        if (summary != null)
+        {
+            infoLines.Add($"  Input     : {summary.InputSize}");
+            infoLines.Add($"  Metrics   : {summary.Metrics}");
+        }
+
+        PrintBoxedContent(infoLines.ToArray());
+        PrintLine();
+        PrintInfo("  Tip: Select [4] from the main menu to view detailed model information.");
     }
 
     public InputSource PromptForInputSource()
@@ -54,6 +69,9 @@ public sealed class ConsoleUserInterface : IUserInterface
         PrintLine();
         PrintOption(1, "Webcam", "Use your camera for real-time detection");
         PrintOption(2, "Image File", "Detect objects in a static image");
+        PrintOption(3, "Batch/Folder", "Process all images in a folder");
+        PrintOption(4, "Model Info", "View details about the loaded model");
+        PrintOption(5, "Settings", "Adjust confidence and IoU thresholds");
         PrintLine();
 
         while (true)
@@ -74,7 +92,25 @@ public sealed class ConsoleUserInterface : IUserInterface
                 return InputSource.ExistingImage;
             }
 
-            PrintError("✗ Invalid choice. Please enter 1 or 2.");
+            if (input == "3")
+            {
+                PrintSuccess("▶ Batch/Folder mode selected");
+                return InputSource.BatchFolder;
+            }
+
+            if (input == "4")
+            {
+                PrintSuccess("▶ Model Info selected");
+                return InputSource.ModelInfo;
+            }
+
+            if (input == "5")
+            {
+                PrintSuccess("▶ Settings selected");
+                return InputSource.Settings;
+            }
+
+            PrintError("✗ Invalid choice. Please enter 1, 2, 3, 4, or 5.");
             PrintLine();
         }
     }
@@ -257,7 +293,7 @@ public sealed class ConsoleUserInterface : IUserInterface
         PrintInfo($"The model has {expectedCount} class(es).");
         PrintInfo("Enter class names separated by commas:");
         PrintLine();
-        PrintInfo("  Example: bottle, bottles, capped-bottle");
+        PrintInfo("  Example: bottle, soap, soap-cover");
         PrintLine();
 
         while (true)
@@ -314,6 +350,131 @@ public sealed class ConsoleUserInterface : IUserInterface
             return dialog.FileName;
         }
         return null;
+    }
+
+    /// <summary>
+    /// Displays detailed information about a known model from the catalog.
+    /// </summary>
+    public void ShowModelInfo(ModelSummary summary)
+    {
+        PrintHeader("MODEL INFORMATION");
+        PrintLine();
+
+        var lines = new List<string>
+        {
+            $"  Name        : {summary.ModelName}",
+            $"  File        : {summary.ModelFile}",
+            $"  Input Size  : {summary.InputSize}",
+            $"  Classes     : {string.Join(", ", summary.Classes)}",
+            $"  Trained     : {summary.TrainingDate}",
+            $"  Metrics     : {summary.Metrics}",
+            "",
+            $"  Description :",
+            $"    {summary.Description}"
+        };
+
+        PrintBoxedContent(lines.ToArray());
+        PrintLine();
+    }
+
+    /// <summary>
+    /// Interactive menu for adjusting detection thresholds in real-time.
+    /// </summary>
+    public void ShowThresholdMenu(DetectionOptions options)
+    {
+        while (true)
+        {
+            PrintHeader("ADJUST DETECTION SETTINGS");
+            PrintLine();
+            PrintOption(1, "Confidence Threshold", $"Current: {options.ConfidenceThreshold:P0}");
+            PrintOption(2, "IoU Threshold", $"Current: {options.IouThreshold:P0}");
+            PrintOption(3, "Reset to defaults", "Confidence: 25%, IoU: 45%");
+            PrintOption(4, "Back to main menu", "Return without changes");
+            PrintLine();
+
+            PrintPrompt("Choice");
+            string? input = Console.ReadLine()?.Trim();
+            PrintLine();
+
+            if (input == "1")
+            {
+                options.ConfidenceThreshold = PromptForThreshold("Confidence", options.ConfidenceThreshold);
+                PrintSuccess($"✓ Confidence threshold updated to {options.ConfidenceThreshold:P0}");
+                PrintLine();
+                continue;
+            }
+
+            if (input == "2")
+            {
+                options.IouThreshold = PromptForThreshold("IoU", options.IouThreshold);
+                PrintSuccess($"✓ IoU threshold updated to {options.IouThreshold:P0}");
+                PrintLine();
+                continue;
+            }
+
+            if (input == "3")
+            {
+                options.ConfidenceThreshold = 0.25f;
+                options.IouThreshold = 0.45f;
+                PrintSuccess("✓ Thresholds reset to defaults");
+                PrintLine();
+                continue;
+            }
+
+            if (input == "4" || string.IsNullOrWhiteSpace(input))
+            {
+                return;
+            }
+
+            PrintError("✗ Invalid choice. Enter 1, 2, 3, or 4.");
+            PrintLine();
+        }
+    }
+
+    /// <summary>
+    /// Displays a batch detection report with aggregate statistics.
+    /// </summary>
+    public void ShowBatchDetectionReport(BatchDetectionReport report, string[] classLabels)
+    {
+        PrintHeader("BATCH DETECTION COMPLETE");
+        PrintLine();
+
+        var lines = new List<string>
+        {
+            $"  Folder     : {report.FolderPath}",
+            $"  Images     : {report.TotalImages} found",
+            $"  Processed  : {report.ProcessedImages} successful",
+            $"  Failed     : {report.FailedImages}",
+            $"  Detections : {report.TotalDetections} total",
+            $"  Time       : {report.Elapsed:mm\\:ss\\.ff}"
+        };
+
+        // Add per-class breakdown
+        var classCounts = report.GetClassCounts(classLabels);
+        if (classCounts.Count > 0)
+        {
+            lines.Add("");
+            lines.Add("  Per-class breakdown:");
+            foreach (var kvp in classCounts.OrderByDescending(k => k.Value))
+            {
+                lines.Add($"    {kvp.Key}: {kvp.Value}");
+            }
+        }
+
+        PrintBoxedContent(lines.ToArray());
+        PrintLine();
+
+        if (report.FailedImages > 0)
+        {
+            PrintWarning($"⚠ {report.FailedImages} image(s) could not be processed.");
+            PrintLine();
+        }
+
+        if (report.ProcessedImages > 0)
+        {
+            PrintInfo($"  Annotated images saved to: {Path.Combine(report.FolderPath, "output")}");
+            PrintLine();
+        }
     }
 
     private string BrowseForImage(IProjectPathProvider pathProvider, string defaultImagePath)
@@ -406,6 +567,42 @@ public sealed class ConsoleUserInterface : IUserInterface
 
             PrintSuccess($"✓ Using: {Path.GetFileName(trimmed)}");
             return trimmed;
+        }
+    }
+
+    /// <summary>
+    /// Prompts the user for a threshold value (0-100%) with validation.
+    /// </summary>
+    private float PromptForThreshold(string name, float currentValue)
+    {
+        PrintLine();
+        PrintInfo($"  Current {name} threshold: {currentValue:P0}");
+        PrintInfo("  Enter a value between 0 and 100 (percentage), or [B] to cancel.");
+        PrintLine();
+
+        while (true)
+        {
+            PrintPrompt($"{name} (%)");
+            string? input = Console.ReadLine()?.Trim();
+            PrintLine();
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return currentValue; // Keep current value
+            }
+
+            if (input.Equals("b", StringComparison.OrdinalIgnoreCase))
+            {
+                return currentValue; // Cancel
+            }
+
+            if (int.TryParse(input, out int percent) && percent >= 0 && percent <= 100)
+            {
+                return percent / 100f;
+            }
+
+            PrintError("✗ Invalid. Enter a number between 0 and 100.");
+            PrintLine();
         }
     }
 

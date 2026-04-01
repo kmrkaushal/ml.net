@@ -25,4 +25,13 @@ public interface IUserInterface
     string? BrowseForOnnxFile();
     string[] PromptForClassLabels(int expectedCount);
     string? BrowseForImageFile();
+
+    // ─── New: Model information display ─────────────────────────
+    void ShowModelInfo(ModelSummary summary);
+
+    // ─── New: Threshold tuning menu ─────────────────────────────
+    void ShowThresholdMenu(DetectionOptions options);
+
+    // ─── New: Batch detection report display ────────────────────
+    void ShowBatchDetectionReport(BatchDetectionReport report, string[] classLabels);
 }

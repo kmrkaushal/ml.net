@@ -1,9 +1,9 @@
-// Input mode enum — Webcam (live camera) or ExistingImage (static file).
+// Input mode enum — Webcam (live camera), ExistingImage (static file), BatchFolder, ModelInfo, Settings.
 
 namespace DeepLearning.Domain.Enums;
 
 /// <summary>
-/// Represents the two available input modes for the detection application.
+/// Represents the available input modes and menu actions for the detection application.
 /// </summary>
 public enum InputSource
 {
@@ -15,5 +15,20 @@ public enum InputSource
     /// <summary>
     /// Use an existing image file stored on disk.
     /// </summary>
-    ExistingImage = 2
+    ExistingImage = 2,
+
+    /// <summary>
+    /// Process all images in a folder through the detection pipeline.
+    /// </summary>
+    BatchFolder = 3,
+
+    /// <summary>
+    /// Display detailed information about the loaded model.
+    /// </summary>
+    ModelInfo = 4,
+
+    /// <summary>
+    /// Open the threshold tuning menu to adjust detection settings.
+    /// </summary>
+    Settings = 5
 }

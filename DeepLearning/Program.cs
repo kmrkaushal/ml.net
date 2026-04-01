@@ -6,6 +6,7 @@ using DeepLearning.Application.Configuration;
 using DeepLearning.Application.UseCases;
 using DeepLearning.Infrastructure.Capture;
 using DeepLearning.Infrastructure.Detection;
+using DeepLearning.Infrastructure.ModelMetadata;
 using DeepLearning.Infrastructure.Pathing;
 using DeepLearning.Infrastructure.Rendering;
 using DeepLearning.Presentation.UI;
@@ -19,10 +20,11 @@ internal static class Program
     {
         var options = new DetectionOptions();
         IUserInterface userInterface = new ConsoleUserInterface();
+        var customModelRegistry = new CustomModelRegistry();
 
-        if (PromptLoadCustomModel(userInterface, options))
+        if (PromptLoadCustomModel(userInterface, options, customModelRegistry))
         {
-            LoadCustomModelFlow(userInterface, options);
+            LoadCustomModelFlow(userInterface, options, customModelRegistry);
         }
 
         using IObjectDetector detector = new OnnxObjectDetector(options);
@@ -36,29 +38,42 @@ internal static class Program
             imageRenderer,
             pathProvider);
 
+        var detectImagesInFolderUseCase = new DetectImagesInFolderUseCase(
+            options,
+            detector,
+            imageRenderer,
+            pathProvider);
+
         var runDetectionApplication = new RunDetectionApplication(
             options,
             userInterface,
             webcamDetectionLoop,
             detectImageFromFileUseCase,
+            detectImagesInFolderUseCase,
             pathProvider);
 
         runDetectionApplication.Execute();
     }
 
-    private static bool PromptLoadCustomModel(IUserInterface userInterface, DetectionOptions options)
+    private static bool PromptLoadCustomModel(IUserInterface userInterface, DetectionOptions options, CustomModelRegistry registry)
     {
+        // Check if the default model is known and show its name
+        var summary = ModelCatalog.TryGetSummary(options.ModelPath);
+        string modelDisplayName = summary != null
+            ? $"{Path.GetFileName(options.ModelPath)} ({summary.ModelName})"
+            : Path.GetFileName(options.ModelPath);
+
         userInterface.ShowInfo("");
-        userInterface.ShowInfo("  Would you like to load a custom ONNX model?");
-        userInterface.ShowInfo("  Or use the default model configured in the app.");
+        userInterface.ShowInfo("  ═══ MODEL SELECTION ═══");
+        userInterface.ShowInfo("");
+        userInterface.ShowInfo($"  Default model: {modelDisplayName}");
+        userInterface.ShowInfo("");
+        userInterface.ShowInfo("  [1] Browse my device for ONNX model");
+        userInterface.ShowInfo("  [2] Use default model");
         userInterface.ShowInfo("");
 
         while (true)
         {
-            userInterface.ShowInfo("  [1] Browse my device for ONNX model");
-            userInterface.ShowInfo("  [2] Use default model");
-            userInterface.ShowInfo("");
-
             userInterface.ShowPrompt("Choice");
             string? input = Console.ReadLine()?.Trim();
             userInterface.ShowInfo("");
@@ -71,7 +86,7 @@ internal static class Program
         }
     }
 
-    private static void LoadCustomModelFlow(IUserInterface userInterface, DetectionOptions options)
+    private static void LoadCustomModelFlow(IUserInterface userInterface, DetectionOptions options, CustomModelRegistry registry)
     {
         userInterface.ShowInfo("");
         userInterface.ShowInfo("  ═══ LOAD CUSTOM MODEL ═══");
@@ -87,6 +102,33 @@ internal static class Program
         userInterface.ShowInfo($"  Model selected: {Path.GetFileName(onnxPath)}");
         options.ModelPath = onnxPath;
 
+        // Check if this model is already in the catalog
+        var catalogSummary = ModelCatalog.TryGetSummary(onnxPath);
+        if (catalogSummary != null)
+        {
+            userInterface.ShowInfo($"  Known model detected: {catalogSummary.ModelName}");
+            userInterface.ShowInfo($"  Description: {catalogSummary.Description}");
+            options.ClassLabels = catalogSummary.Classes;
+            userInterface.ShowInfo("");
+            userInterface.ShowSuccess($"  Model loaded successfully: {catalogSummary.ModelName}");
+            userInterface.ShowInfo("");
+            return;
+        }
+
+        // Check if this model was previously registered by the user
+        var customSummary = registry.GetCustomModel(onnxPath);
+        if (customSummary != null)
+        {
+            userInterface.ShowInfo($"  Previously registered model found.");
+            options.ClassLabels = customSummary.Classes;
+            userInterface.ShowInfo($"  Classes: {string.Join(", ", customSummary.Classes)}");
+            userInterface.ShowInfo("");
+            userInterface.ShowSuccess($"  Model loaded successfully: {customSummary.ModelName}");
+            userInterface.ShowInfo("");
+            return;
+        }
+
+        // Unknown model — infer class count and prompt for labels
         int inferredClassCount;
         try
         {
@@ -105,7 +147,29 @@ internal static class Program
         string[] classLabels = userInterface.PromptForClassLabels(inferredClassCount);
         options.ClassLabels = classLabels;
 
+        // Ask if user wants to register this model for future sessions
         userInterface.ShowInfo("");
+        userInterface.ShowInfo("  Would you like to save this model's info for future sessions?");
+        userInterface.ShowInfo("  [1] Yes — save model metadata");
+        userInterface.ShowInfo("  [2] No — just use it this session");
+        userInterface.ShowInfo("");
+        userInterface.ShowPrompt("Choice");
+        string? saveChoice = Console.ReadLine()?.Trim();
+        userInterface.ShowInfo("");
+
+        if (saveChoice == "1")
+        {
+            userInterface.ShowInfo("  Enter a short description for this model (optional):");
+            userInterface.ShowInfo("  (Press Enter to skip)");
+            userInterface.ShowInfo("");
+            userInterface.ShowPrompt("Description");
+            string? description = Console.ReadLine()?.Trim();
+            userInterface.ShowInfo("");
+
+            registry.RegisterModel(onnxPath, classLabels, description);
+            userInterface.ShowInfo("  Model metadata saved for future sessions.");
+        }
+
         userInterface.ShowSuccess($"  Custom model loaded successfully!");
         userInterface.ShowInfo("");
     }
