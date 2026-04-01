@@ -870,15 +870,15 @@ Step 8: OUTPUT
 
 ## 8. Configuration Reference
 
-### DetectionOptions Properties
+### DetectionOptions Properties (v2.0)
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `ModelPath` | `string` | `"soap_v7.onnx"` | Path to the ONNX model file |
-| `ClassLabels` | `string[]` | `["soap", "soap-cover"]` | Human-readable names for each class |
+| `ModelPath` | `string` | `"detector_v4.onnx"` | Path to the ONNX model file |
+| `ClassLabels` | `string[]` | `["bottle", "soap", "soap-cover"]` | Human-readable names for each class |
 | `ModelWidth` | `int` | `640` | Model input width (must match model) |
 | `ModelHeight` | `int` | `640` | Model input height (must match model) |
-| `ConfidenceThreshold` | `float` | `0.20f` | Minimum confidence to keep a detection |
+| `ConfidenceThreshold` | `float` | `0.45f` | Minimum confidence to keep a detection |
 | `IouThreshold` | `float` | `0.45f` | Maximum IoU before NMS removes a box |
 | `CameraIndex` | `int` | `0` | Which webcam to use (0 = first) |
 | `WindowTitle` | `string` | `"Object Detection (ESC to exit)"` | OpenCV window title |

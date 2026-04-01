@@ -11,9 +11,9 @@
     <StartupObject>DeepLearning.Program</StartupObject>
     <AssemblyName>SoapDetector</AssemblyName>
     <Product>Soap Detector</Product>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
     <Authors>DeepLearning Team</Authors>
     <Description>Real-time soap object detection console app powered by YOLO ONNX models.</Description>
   </PropertyGroup>
@@ -28,6 +28,9 @@
 
   <ItemGroup>
     <None Update="sample.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="detector_v4.onnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="detector_v3.onnx">

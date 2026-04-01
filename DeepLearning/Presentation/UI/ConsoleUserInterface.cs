@@ -414,9 +414,9 @@ public sealed class ConsoleUserInterface : IUserInterface
 
             if (input == "3")
             {
-                options.ConfidenceThreshold = 0.25f;
+                options.ConfidenceThreshold = 0.45f;
                 options.IouThreshold = 0.45f;
-                PrintSuccess("✓ Thresholds reset to defaults");
+                PrintSuccess("✓ Thresholds reset to defaults (Confidence: 45%, IoU: 45%)");
                 PrintLine();
                 continue;
             }
