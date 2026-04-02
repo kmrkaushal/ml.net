@@ -20,8 +20,8 @@ val: images/val
 nc: 3
 names:
   0: bottle
-  1: soap
-  2: soap-cover
+  1: soap-cover
+  2: soap
 """
 
 yaml_path = os.path.join(DATASET_DIR, "data.yaml")

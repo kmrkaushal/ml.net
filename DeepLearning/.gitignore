@@ -7,7 +7,6 @@ publish/
 .vs/
 *.suo
 *.user
-*.suo
 
 # JetBrains Rider / other IDEs
 .idea/
@@ -19,9 +18,24 @@ Thumbs.db
 
 # Large model files (use NuGet or separate asset download for these)
 *.onnx
+*.pt
+
+# YOLO training outputs
+runs/
+dataset/images/
+dataset/labels/
+dataset/*.cache
+raw-data/
 
 # Generated images / output
 *.jpg
 *.png
 *.jpeg
 output.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
