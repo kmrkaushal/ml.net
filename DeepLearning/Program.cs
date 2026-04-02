@@ -21,14 +21,29 @@ internal static class Program
         var options = new DetectionOptions();
         IUserInterface userInterface = new ConsoleUserInterface();
         var customModelRegistry = new CustomModelRegistry();
+        IProjectPathProvider pathProvider = new ProjectPathProvider();
 
         if (PromptLoadCustomModel(userInterface, options, customModelRegistry))
         {
             LoadCustomModelFlow(userInterface, options, customModelRegistry);
         }
 
+        string resolvedModelPath = pathProvider.GetAbsolutePath(options.ModelPath);
+        if (!File.Exists(resolvedModelPath))
+        {
+            userInterface.ShowError($"Model file not found: {resolvedModelPath}");
+            userInterface.ShowInfo("");
+            userInterface.ShowInfo("  Attempted to load: " + options.ModelPath);
+            userInterface.ShowInfo("  Resolved to: " + resolvedModelPath);
+            userInterface.ShowInfo("");
+            userInterface.ShowInfo("  Press any key to exit...");
+            Console.ReadKey();
+            return;
+        }
+
+        options.ModelPath = resolvedModelPath;
+
         using IObjectDetector detector = new OnnxObjectDetector(options);
-        IProjectPathProvider pathProvider = new ProjectPathProvider();
         IImageRenderer imageRenderer = new DetectionOverlayRenderer(options);
         IWebcamDetectionLoop webcamDetectionLoop = new WebcamDetectionLoop(options, detector, imageRenderer, userInterface);
 
