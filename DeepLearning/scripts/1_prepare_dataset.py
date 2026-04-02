@@ -15,8 +15,8 @@ Class mapping in label files:
 
 Target mapping (unified):
   class 0 = bottle
-  class 1 = soap
-  class 2 = soap-cover
+  class 1 = soap-cover
+  class 2 = soap
 
 Usage:
   python scripts/1_prepare_dataset.py
@@ -79,15 +79,15 @@ def read_labels(path):
 def remap_soap(boxes):
     """
     Remap soap label classes to unified mapping.
-    Original: 0 = soap (bar), 1 = soap-cover (wrapper)
-    Target:   1 = soap, 2 = soap-cover
+    Original: 0 = soap-cover (wrapper), 1 = soap (bar)
+    Target:   1 = soap-cover, 2 = soap
     """
     remapped = []
     for cls, cx, cy, w, h in boxes:
         if cls == 0:
-            new_cls = 1  # soap (bar)
+            new_cls = 1  # soap-cover (wrapper)
         elif cls == 1:
-            new_cls = 2  # soap-cover (wrapper)
+            new_cls = 2  # soap (bar)
         else:
             continue  # skip unknown classes
         remapped.append([new_cls, cx, cy, w, h])

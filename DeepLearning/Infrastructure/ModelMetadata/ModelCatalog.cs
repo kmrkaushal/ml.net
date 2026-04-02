@@ -42,7 +42,7 @@ public static class ModelCatalog
         Description = "Multi-object detector trained on bottles, soaps, and soap covers. "
             + "Known issues: soap class has 0% detection accuracy (confusion with background), "
             + "soap-cover class has 13.5% accuracy. Superseded by v4.",
-        Classes = ["bottle", "soap", "soap-cover"],
+        Classes = ["bottle", "soap-cover", "soap"],
         InputSize = "640x640",
         TrainingDate = "April 2026",
         Metrics = "mAP50: 51.7% | Precision: 52.8% | Recall: 45.0% | (83 epochs, early stopped)"
@@ -59,7 +59,7 @@ public static class ModelCatalog
         Description = "Object detector trained primarily on bottles. "
             + "Earlier version with limited class coverage. "
             + "Upgraded to v3 for full bottle + soap + soap-cover detection.",
-        Classes = ["bottle", "soap", "soap-cover"],
+        Classes = ["bottle", "soap-cover", "soap"],
         InputSize = "640x640",
         TrainingDate = "April 2026",
         Metrics = "mAP50: 60.1% | Precision: 80.8% | Recall: 63.9%"
