@@ -168,11 +168,32 @@ public sealed class ConsoleUserInterface : IUserInterface
     public void ShowImageDetectionReport(ImageDetectionReport report, string[] classLabels)
     {
         PrintHeader("DETECTION COMPLETE");
+
+        string timeDisplay = FormatElapsedTime(report.Elapsed);
+
         PrintBoxedContent([
             $"  Input  : {report.InputPath}",
-            $"  Output : {report.OutputPath}"
+            $"  Output : {report.OutputPath}",
+            $"  Time   : {timeDisplay}"
         ]);
         ShowDetections(report.Detections, classLabels);
+    }
+
+    private string FormatElapsedTime(TimeSpan elapsed)
+    {
+        if (elapsed.TotalHours >= 1)
+        {
+            return $"{(int)elapsed.TotalHours}h {elapsed.Minutes}m {elapsed.Seconds}s";
+        }
+        if (elapsed.TotalMinutes >= 1)
+        {
+            return $"{(int)elapsed.TotalMinutes}m {elapsed.Seconds}s";
+        }
+        if (elapsed.TotalSeconds >= 1)
+        {
+            return $"{elapsed.TotalSeconds:F2}s";
+        }
+        return $"{elapsed.TotalMilliseconds:F0}ms";
     }
 
     public void ShowWebcamInstructions(DetectionOptions options)
@@ -446,7 +467,7 @@ public sealed class ConsoleUserInterface : IUserInterface
             $"  Processed  : {report.ProcessedImages} successful",
             $"  Failed     : {report.FailedImages}",
             $"  Detections : {report.TotalDetections} total",
-            $"  Time       : {report.Elapsed:mm\\:ss\\.ff}"
+            $"  Time       : {FormatElapsedTime(report.Elapsed)}"
         };
 
         // Add per-class breakdown

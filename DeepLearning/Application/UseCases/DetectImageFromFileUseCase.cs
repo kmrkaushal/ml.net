@@ -72,6 +72,8 @@ public sealed class DetectImageFromFileUseCase
                 imagePath);
         }
 
+        var stopwatch = Stopwatch.StartNew();
+
         using Bitmap sourceImage = new(imagePath);
         IReadOnlyList<Domain.Entities.DetectionResult> detections = _detector.Detect(sourceImage);
         using Bitmap renderedImage = _imageRenderer.DrawDetections(sourceImage, detections);
@@ -85,11 +87,14 @@ public sealed class DetectImageFromFileUseCase
             catch { }
         }
 
+        stopwatch.Stop();
+
         return new ImageDetectionReport
         {
             InputPath = imagePath,
             OutputPath = outputPath,
-            Detections = detections
+            Detections = detections,
+            Elapsed = stopwatch.Elapsed
         };
     }
 

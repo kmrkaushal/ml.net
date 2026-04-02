@@ -28,4 +28,7 @@ public sealed class ImageDetectionReport
     /// The list of detected objects found in the image.
     /// </summary>
     public required IReadOnlyList<DetectionResult> Detections { get; init; }
+
+    /// <summary>Time taken to process this image.</summary>
+    public TimeSpan Elapsed { get; init; }
 }
