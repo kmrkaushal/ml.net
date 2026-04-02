@@ -4,7 +4,7 @@ namespace DeepLearning.Application.Configuration;
 
 public sealed class DetectionOptions
 {
-    public string ModelPath { get; set; } = "detector_v4.onnx";
+    public string ModelPath { get; set; } = "detector_v3.onnx";
     public string[] ClassLabels { get; set; } = ["bottle", "soap", "soap-cover"];
     public int ModelWidth { get; set; } = 640;
     public int ModelHeight { get; set; } = 640;
